@@ -173,6 +173,10 @@ class ResourceManager(object):
         self.container = self.resource_class.container_one
         data = {self.resource_class.container_create: self.prepare_params(formatter.unused_kwargs)}
 
+        # Especially for softjourn's redmine
+        if 'project_sow_id' in data[self.resource_class.container_create]:
+            data['project_sow_id'] = data[self.resource_class.container_create].pop('project_sow_id')
+
         if 'uploads' in data[self.resource_class.container_create]:
             data['attachments'] = data[self.resource_class.container_create].pop('uploads')
             for index, attachment in enumerate(data['attachments']):
