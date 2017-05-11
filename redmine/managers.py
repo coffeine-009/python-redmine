@@ -177,6 +177,9 @@ class ResourceManager(object):
         if 'project_sow_id' in data[self.resource_class.container_create]:
             data['project_sow_id'] = data[self.resource_class.container_create].pop('project_sow_id')
 
+        if 'role_id' in data[self.resource_class.container_create]:
+            data['role_id'] = data[self.resource_class.container_create].pop('role_id')
+
         if 'uploads' in data[self.resource_class.container_create]:
             data['attachments'] = data[self.resource_class.container_create].pop('uploads')
             for index, attachment in enumerate(data['attachments']):
